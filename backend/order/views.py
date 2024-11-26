@@ -276,10 +276,12 @@ class OrderViewSet(viewsets.ModelViewSet):
                 new_employer_salary = b_service.employer_salary
 
                 if b_service.cost != service['cost']:
-                    comments += f'{user.name} изменил \
-                                    стоимость услуги{contract} \
-                                    "{service['service_name']}" c \
-                                    {b_service.cost}₽ на {service['cost']}₽\n'
+                    comm = (
+                        f'{user.name} изменил стоимость услуги {contract} '
+                        f'{service["service_name"]} c {b_service.cost}₽ на '
+                        f'{service["cost"]}₽\n'
+                    )
+                    comments += comm
                     new_employer_salary = round(
                         (service['cost'] / b_service.cost) * new_employer_salary
                     )
@@ -443,10 +445,12 @@ class OrderViewSet(viewsets.ModelViewSet):
                 service['vehicle']['id'] = vehicle_obj.pk
                 
             if b_service.cost != service['cost']:
-                comments += f'{administrator_object.short_name} изменил \
-                                стоимость услуги{contract} \
-                                "{service['service']['name']}" c \
-                                {b_service.cost}₽ на {service['cost']}₽\n'
+                comments += (
+                    f'{administrator_object.short_name} изменил '
+                    f'стоимость услуги{contract} '
+                    f'{service["service"]["name"]} c '
+                    f'{b_service.cost}₽ на {service["cost"]}₽\n'
+                )
                 new_employer_salary = round(
                     (service['cost'] / b_service.cost) * new_employer_salary
                 )

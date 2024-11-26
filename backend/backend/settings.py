@@ -13,9 +13,11 @@ SECRET_KEY = '8)2@x&!-#-n6y2q4anl_--q#laeke+&0p&9z%kr_85idv0$uaa'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'bvvtestserver.ru']
+ALLOWED_HOSTS = ['localhost', 'bvvtestserver.ru', '127.0.0.1']
 
+DJANGO_SUPERUSER_NAME=os.getenv('DJANGO_SUPERUSER_NAME', 'admin')
 
+DJANGO_SUPERUSER_PASSWORD=os.getenv('DJANGO_SUPERUSER_PASSWORD', 'admin')
 # Application definition
 
 INSTALLED_APPS = [
@@ -76,10 +78,6 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # },
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.getenv('POSTGRES_DB', 'django'),
@@ -164,7 +162,8 @@ DJOSER = {
 
 CORS_ALLOWED_ORIGINS = [
     'https://bvvtestserver.ru',
-    'https://localhost',
+    'http://localhost',
+    'http://127.0.0.1',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True

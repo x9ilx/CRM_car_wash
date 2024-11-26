@@ -1,5 +1,5 @@
-export const URL = "http://localhost:8000/";
-// export const URL = "";
+// export const URL = "http://nginx";
+export const URL = "";
 import Cookies from "universal-cookie";
 import { COOKIES_LIFE_TIME } from "../constants";
 

@@ -162,12 +162,12 @@ class Command(BaseCommand):
         try:
             newuser, _ = User.objects.update_or_create(
                 pk=1,
-                username='admin_backup_user',
+                username=settings.DJANGO_SUPERUSER_NAME,
                 is_superuser=True,
                 is_staff=True,
                 is_active=True,
             )
-            newuser.set_password('chg_admin')
+            newuser.set_password(settings.DJANGO_SUPERUSER_PASSWORD)
             newuser.save()
 
             employer, _ = Employer.objects.update_or_create(
@@ -187,11 +187,8 @@ class Command(BaseCommand):
         self.stdout.write('\n\n')
 
     def handle(self, *args, **kwargs):
-
         self.print_divider()
-
         self.create_super_user()
-
         if self.check_installed_apps('company'):
             self.load_data(
                 'company',
@@ -205,7 +202,6 @@ class Command(BaseCommand):
                 './data/company_settings.csv',
                 self.load_requisites,
             )
-
         if self.check_installed_apps('vehicle'):
             self.load_data(
                 'vehicle',
@@ -245,6 +241,5 @@ class Command(BaseCommand):
                 './data/legal_entity.csv',
                 self.load_no_foreign_key_table,
             )
-
         self.call_sqlsequence_all_app()
         self.print_divider()

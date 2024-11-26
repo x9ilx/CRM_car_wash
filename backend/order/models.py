@@ -109,7 +109,11 @@ class OrderService(models.Model):
         null=True,
         related_name='services_in_order',
     )
-    base_service_id = models.IntegerField('ID базовой услуги')
+    base_service_id = models.IntegerField(
+        'ID базовой услуги',
+        blank=True,
+        default=None
+    )
     vehicle = models.ForeignKey(
         'vehicle.Vehicle',
         verbose_name='ТС/ППЦ',

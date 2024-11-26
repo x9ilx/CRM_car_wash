@@ -32,7 +32,7 @@ class LegalEntity(models.Model):
         on_delete=models.SET_NULL,
         related_name='+',
         null=True,
-        blank=True,
+        blank=True
     )
 
     class Meta:
@@ -78,7 +78,7 @@ class LegalEntityContract(models.Model):
 
     def __str__(self):
         """Unicode representation of LegalEntity."""
-        return f'Договор №{self.pk}, от {self.start_date.strftime('%d.%m.%Y')}г.'
+        return f'Договор №{self.pk}, от {self.start_date.strftime("%d.%m.%Y")}г.'
 
 
 class LegalEntytyContractServices(models.Model):

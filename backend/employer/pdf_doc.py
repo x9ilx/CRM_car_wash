@@ -16,13 +16,13 @@ class EmployerSalaryDocPDF(BaseEmployerDocsPDF):
         elements = []
         elements.append(
             Paragraph(
-                f'Заработная плата, от {self.salary.date_of_issue.strftime('%d.%m.%Y')}г.',
+                f'Заработная плата, от {self.salary.date_of_issue.strftime("%d.%m.%Y")}г.',
                 self.RIGHT_HEADER_STYLE),
         )
         elements.append(flowables.HRFlowable(width='100%', spaceAfter=10))
         elements.append(
             Paragraph(
-                f"Расчёт ЗП за период: {self.salary.start_date.strftime('%d.%m.%Y')}г. - {self.salary.end_date.strftime('%d.%m.%Y')}г.",
+                f'Расчёт ЗП за период: {self.salary.start_date.strftime("%d.%m.%Y")}г. - {self.salary.end_date.strftime("%d.%m.%Y")}г.',
                 self.HEADER_STYLE,
             )
         )
@@ -35,7 +35,7 @@ class EmployerSalaryDocPDF(BaseEmployerDocsPDF):
         elements.append(
             Paragraph(
                 f'<b>Дата выдачи: '
-                f'{self.salary.date_of_issue.strftime('%d.%m.%Y')}г.</b>',
+                f'{self.salary.date_of_issue.strftime("%d.%m.%Y")}г.</b>',
                 self.NORMAL_STYLE,
             )
         )

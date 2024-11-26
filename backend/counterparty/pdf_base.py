@@ -121,13 +121,13 @@ class BaseLegalEntityDocsPDF(ABC):
     def get_details_and_signatures_pairs(self):
         l_en: LegalEntity = self.legal_entity_contract.legal_entity
         dir_name_list = self.director_name.split()
-        dir_initials = (f'{dir_name_list[0] or ''}. '
-                        f'{dir_name_list[1][0] or ''}. '
-                        f'{dir_name_list[2][0] or ''}.')
+        dir_initials = (f'{dir_name_list[0] or ""}. '
+                        f'{dir_name_list[1][0] or ""}. '
+                        f'{dir_name_list[2][0] or ""}.')
         le_name_list = l_en.director_name.split()
-        le_initials = (f'{le_name_list[0] or ''}. '
-                        f'{le_name_list[1][0] or ''}. '
-                        f'{le_name_list[2][0] or ''}.')
+        le_initials = (f'{le_name_list[0] or ""}. '
+                        f'{le_name_list[1][0] or ""}. '
+                        f'{le_name_list[2][0] or ""}.')
         
         elements = []
         add_doc_data = [

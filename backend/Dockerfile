@@ -10,6 +10,4 @@ RUN pip install -r /app/requirements.txt --no-cache-dir
 
 COPY . .
 
-RUN chmod +x /app/start_server.sh
-
-CMD "/app/start_server.sh"
+CMD  python3 "/app/start_server.py"
