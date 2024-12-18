@@ -1,0 +1,39 @@
+version: '3.3'
+
+volumes:
+  pg_data_chg:
+  static:
+
+services:
+  db:
+    restart: always
+    image: postgres:13
+    volumes:
+      - pg_data_chg:/var/lib/postgresql/data
+    env_file: ./backend/.env
+
+  backend:
+    build: ./backend/
+    env_file: ./backend/.env
+    volumes:
+      - static:/static/
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    env_file: ./backend/.env
+    volumes:
+      - static:/static/
+
+  nginx:
+    image: nginx:1.19.3
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - static:/static/
+    depends_on:
+      - backend

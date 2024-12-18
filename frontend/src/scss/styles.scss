@@ -1,0 +1,182 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+$theme-colors: (
+  "primary": #1c81a6,
+  "secondary": #a6861c,
+  "danger": #a61c3c,
+  "success": #1ca641,
+  "contrast": #ebdb4c,
+  "info": #3c4eb9,
+  "text-color": #272727,
+);
+
+$font-sizes: (
+  1: $h1-font-size,
+  2: $h2-font-size,
+  3: $h3-font-size,
+  4: $h4-font-size,
+  5: $h5-font-size,
+  6: $h6-font-size,
+  7: 0.9rem,
+  // adds fs-7
+  8: 0.8rem,
+  // adds fs-n1
+  9: 0.7rem,
+  // adds fs-7
+  10: 0.6rem,
+  11: 0.5rem,
+  12: 0.4rem,
+  13: 0.3rem,
+  // adds fs-n1
+);
+
+$pagination-color: #272727;
+$pagination-hover-color: #272727;
+$pagination-active-color: #e7e7e7;
+$pagination-active-bg: #1c81a6;
+$pagination-active-border-color: #1c81a6;
+$pagination-disabled-color: #08202b;
+$pagination-disabled-bg: rgb(#08202b, 0.15);
+$pagination-disabled-border-color: rgb(#08202b, 0.15);
+
+$form-switch-checked-color: #e7e7e7;
+$bs-btn-active-color: #e7e7e7;
+
+@import "bootstrap/scss/bootstrap";
+
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+  background-color: rgb(#1c81a6, 0.5);
+}
+
+.paginator-hover:hover {
+  background-color: rgb(#1c81a6, 0.65);
+}
+
+.text {
+  color: #272727 !important;
+}
+
+.text_light {
+  color: #e7e7e7;
+  text-shadow: 1px -1px 7px rgba(0, 0, 0, 0.45);
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.btn-bd-primary {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: #f5f5f5;
+  --bs-btn-bg: #1c81a6;
+  --bs-btn-border-color: #228ec0;
+  --bs-btn-hover-color: #e7e7e7;
+  --bs-btn-hover-bg: #{shade-color(#228ec0, 10%)};
+  --bs-btn-hover-border-color: #{shade-color(#228ec0, 10%)};
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #{shade-color(#228ec0, 20%)};
+  --bs-btn-active-border-color: #{shade-color(#228ec0, 20%)};
+}
+
+.accordion {
+  --bs-accordion-active-bg: #1c81a6;
+  --bs-accordion-active-color: #ffffff;
+  --bs-accordion-color: #000000;
+  --bs-accordion-btn-focus-box-shadow: none;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFFFFF'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.vehicle_datalist_container {
+  width: auto;
+  position: relative;
+  display: block;
+  z-index: 1000;
+  border-radius: var(--bs-border-radius);
+}
+
+.vehicle_datalist_listgroup {
+  max-height: 10rem;
+  overflow-y: auto;
+}
+
+.order_service_element:hover {
+  box-shadow: 0px 2px 29px -6px rgba(0, 0, 0, 0.72);
+  -webkit-box-shadow: 0px 2px 29px -6px rgba(0, 0, 0, 0.72);
+  -moz-box-shadow: 0px 2px 29px -6px rgba(0, 0, 0, 0.72);
+}
+
+@media print {
+  html,
+  body {
+    height: initial !important;
+    overflow: initial !important;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+@media print {
+  a[href]:after { content: none; }
+  #header,
+  #footer,
+  #nav {
+    display: none !important;
+  }
+  header, footer { 
+    display: none !important;
+  }
+
+  .page-break {
+    margin-top: 1rem;
+    display: block;
+    page-break-before: always;
+  }
+  .print_content {
+    padding: 50px;
+  }
+  // body {
+  //   padding: 1cm !important;
+  // }
+}
+@media screen {
+  .print_content {
+    display: none;
+  }
+}
+// @page {
+//   size: A4;
+//   @bottom-right {
+//     content: counter(page) ' of ' counter(pages);
+//   }
+// }
+// @page {
+//   size: A4;
+//   margin-left: 10mm;
+//   margin-right: 10mm;
+//   margin-top: 10mm;
+//   margin-bottom: 10mm;
+// }
+// @page
+//     {
+//         size:  auto;   /* auto is the initial value */
+//         margin: 0mm;  /* this affects the margin in the printer settings */
+//     }
+
+.btn-check:checked + .btn,
+:not(.btn-check) + .btn:active,
+.btn:first-child:active,
+.btn.active,
+.btn.show {
+  color: #f5f5f5 !important;
+}
+
+// .input-group > .btn:hover {
+//   color: #f5f5f5 !important;
+// }
